@@ -44,14 +44,21 @@ $(function() {
 		// Dette er samme metode som get, måtte bare sjekke hva som virker. Begge skal virke i vårt tilfelle.
 		$.getJSON(queryUrl, function(data, status){
 			console.log("Data: " + data + "\nStatus: " + status); 
+			//Her henter vi ut objektet med resultater via json
 			var results = data.results.bindings;
-			var index = 0;
+			
+			
+			// Løkke for å iterer over resulatene. 
 			for(var i in results){
+				//Lagre subjektet her
 				var a = results[i].a.value;
+				// Lagre predikatet her
 				var b = results[i].b.value;
+				// Lagre objektet her
 				var c = results[i].c.value;
+				//JQuery-metode for å si: "Legg til dataene fra a, b og c på hver sin data-rad i en html-tabell som er markert opp i html-dokumentet"
 				$('table').append( '<tr><td>' + 'A = ' +  a + '</td><td>' + b + '</td><td>' + c +'</td></tr>' );
-				console.log(a + " index " + index++);
+				
 			}
 		})
 	
